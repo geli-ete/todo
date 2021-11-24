@@ -14,7 +14,7 @@ export default {
   },
   methods: {
     getDate() {
-      this.date = format(new Date(), "d MMMM yyyy, H:mm:ss aaa");
+      this.date = format(new Date(), "d MMMM yyyy, h:mm:ss aaa");
       setTimeout(this.getDate, 1000);
     },
   },
