@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import DigitalLibrary from "../views/DigitalLibrary.vue";
 import BookAdd from "../views/BookAdd.vue";
 import Todo from "../views/Todo.vue";
+import goTo from "vuetify/es5/services/goto";
 
 Vue.use(VueRouter);
 
@@ -23,16 +24,27 @@ const routes = [
   },
   {
     path: "/digilib/addbook",
+    name: "Add-Book",
     component: BookAdd,
   },
   {
     path: "/todo",
+    name: "Todo",
     component: Todo,
   },
 ];
 
 const router = new VueRouter({
   routes,
+});
+
+router.beforeEach((to, _, next) => {
+  document.title = `${process.env.VUE_APP_TITLE} - ${to.name}`;
+  next();
+});
+
+router.afterEach((to, from) => {
+  goTo(0, { duration: 0 });
 });
 
 export default router;

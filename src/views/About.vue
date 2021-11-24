@@ -1,6 +1,6 @@
 <template>
   <div class="about pa-6">
-    <h1>About Vuetify</h1>
+    <h1>About {{ $store.state.appTitle }}</h1>
     <p>
       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque maiores
       qui quibusdam quisquam. Sit quam natus magni temporibus recusandae

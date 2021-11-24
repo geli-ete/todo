@@ -7,7 +7,7 @@
         <template>
           <v-list-item-content>
             <v-list-item-title>Create Book</v-list-item-title>
-            <v-container v-if="unitExist">
+            <v-container v-if="unitInit">
               <v-btn elevation="2" outlined @click="addUnit"
                 ><v-icon>mdi-plus</v-icon>Unit</v-btn
               >
@@ -38,6 +38,10 @@ export default {
   components: {},
   data() {
     return {
+      unitInit: true,
+      first: "",
+      last: "",
+      dialog: false,
       unitInc: 0,
       book: [
         {
@@ -76,18 +80,14 @@ export default {
           },
         },
       ],
-      unitExist: true,
-      first: "",
-      last: "",
-      dialog: false,
     };
   },
   computed: {
     noUnit() {
-      this.unitExist = false;
+      this.unitInit = false;
     },
     addUnit() {
-      this.unitExist = true;
+      this.unitInit = true;
       if (Object.keys(this.book).length === 0) {
         let unitNow = "unit" + 1;
         this.book[unitNow] = {
